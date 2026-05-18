@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Fuel, MapPin, TrendingDown } from 'lucide-react'
 import CercaDeMiBtn from '../components/CercaDeMiBtn'
-import MobileBottomNav from '../components/MobileBottomNav'
+import MobileHamburgerMenu from '../components/MobileHamburgerMenu'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
@@ -22,10 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col relative pb-20 md:pb-0 overflow-x-hidden`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col relative`}>
         {/* Abstract Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-emerald-500/5 via-teal-500/5 to-transparent -z-10 blur-3xl pointer-events-none"></div>
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[120px] -z-10 pointer-events-none"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+          <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-emerald-500/5 via-teal-500/5 to-transparent blur-3xl"></div>
+          <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[120px]"></div>
+        </div>
         
         {/* Navigation */}
         <nav className="sticky top-0 z-50 bg-white border-b border-slate-100 transition-all">
@@ -43,6 +45,7 @@ export default function RootLayout({
                   <TrendingDown size={18} /> Más Baratas
                 </Link>
               </div>
+              <MobileHamburgerMenu />
             </div>
           </div>
         </nav>
@@ -52,8 +55,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* Floating Mobile Bottom Nav */}
-        <MobileBottomNav />
+
 
         {/* Footer */}
         <footer className="bg-white border-t border-slate-100 py-16 mt-20 text-slate-600">
