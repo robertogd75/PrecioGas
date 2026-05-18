@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gasolineras_backend
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - backend_data:/app/data # Guarda el JSON aunque se apague el contenedor
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: gasolineras_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # Conexión interna dentro de la red Docker
+      - NEXT_PUBLIC_API_URL=http://backend:3001
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+# Si vas a usar un túnel de Cloudflare, podrías añadir el servicio de cloudflared aquí.
+#   cloudflared:
+#     image: cloudflare/cloudflared:latest
+#     command: tunnel --no-autoupdate run --token TU_TOKEN_AQUI
+#     restart: always
+#     networks:
+#       - app_network
+
+volumes:
+  backend_data:
+
+networks:
+  app_network:
+    driver: bridge
