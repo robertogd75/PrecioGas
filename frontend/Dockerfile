@@ -11,8 +11,9 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# La URL del API para producción (red docker interna)
-ENV NEXT_PUBLIC_API_URL=http://backend:3001 
+# La URL del API para producción (inyectada en la compilación)
+ARG NEXT_PUBLIC_API_URL=http://localhost:3001
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 RUN npm run build
 
 FROM node:18-alpine AS runner
