@@ -97,12 +97,24 @@ export default function Home() {
             <div className="pl-3 text-slate-400 shrink-0">
               <Search size={20} />
             </div>
+            {/* Input Móvil */}
+            <input 
+              type="text" 
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="Buscar por municipio" 
+              className="w-full py-2 px-1 bg-transparent outline-none text-slate-800 text-base font-medium placeholder-slate-400 md:hidden"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleSearch();
+              }}
+            />
+            {/* Input Desktop */}
             <input 
               type="text" 
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Buscar municipio o provincia..." 
-              className="w-full py-2 px-1 bg-transparent outline-none text-slate-800 text-base font-medium placeholder-slate-400"
+              className="hidden md:block w-full py-2 px-1 bg-transparent outline-none text-slate-800 text-base font-medium placeholder-slate-400"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleSearch();
               }}
