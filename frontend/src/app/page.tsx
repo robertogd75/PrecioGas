@@ -176,26 +176,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* Precios Medios Nacionales */}
-      <section className="max-w-4xl mx-auto mb-12 glass rounded-3xl p-6 border border-slate-100/80">
-        <h2 className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">
-          Media de Precios Nacional (Toda España)
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-          <div className="pb-4 md:pb-0">
-            <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> GASOLINA 95</span>
-            <span className="text-2xl font-extrabold text-slate-800 font-mono">1.594 €/L</span>
-          </div>
-          <div className="py-4 md:py-0 md:px-4">
-            <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> DIÉSEL A</span>
-            <span className="text-2xl font-extrabold text-slate-800 font-mono">1.482 €/L</span>
-          </div>
-          <div className="pt-4 md:pt-0 md:pl-4">
-            <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> GLP VEHÍCULO</span>
-            <span className="text-2xl font-extrabold text-slate-800 font-mono">0.941 €/L</span>
-          </div>
-        </div>
-      </section>
+
 
       {/* Mapa Interactivo Nacional */}
       <section className="mb-16 w-full">
