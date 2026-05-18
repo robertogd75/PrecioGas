@@ -32,8 +32,8 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
               <Link href="/" className="flex items-center group transition-transform hover:scale-[1.02] gap-3">
-                <Image src="/logo.png" alt="PreciosGas Logo" width={100} height={100} className="w-16 h-16 md:w-[72px] md:h-[72px] object-contain" priority />
-                <span className="font-outfit font-bold text-xl md:text-2xl tracking-tight text-slate-900">
+                <Image src="/logo.png" alt="PreciosGas Logo" width={150} height={150} className="w-16 h-16 md:w-20 md:h-20 object-contain scale-[1.35] md:scale-150 origin-center" priority />
+                <span className="font-outfit font-bold text-xl md:text-2xl tracking-tight text-slate-900 ml-2">
                   Precio<span className="text-emerald-600">Gas</span>
                 </span>
               </Link>
@@ -56,13 +56,13 @@ export default function RootLayout({
         <MobileBottomNav />
 
         {/* Footer */}
-        <footer className="bg-slate-50 border-t border-slate-100 py-16 mt-20 text-slate-600">
+        <footer className="bg-white border-t border-slate-100 py-16 mt-20 text-slate-600">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               {/* Columna 1: Brand & Description */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3 mb-4">
-                  <Image src="/logo.png" alt="PreciosGas Logo" width={120} height={120} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+                  <Image src="/logo.png" alt="PreciosGas Logo" width={150} height={150} className="w-20 h-20 md:w-24 md:h-24 object-contain scale-125 md:scale-150 origin-left" />
                   <span className="font-outfit font-bold text-xl tracking-tight text-slate-900">
                     Precio<span className="text-emerald-600">Gas</span>
                   </span>
