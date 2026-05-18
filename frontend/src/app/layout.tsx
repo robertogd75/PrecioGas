@@ -32,7 +32,7 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
               <Link href="/" className="flex items-center group transition-transform hover:scale-[1.02]">
-                <Image src="/logo.png" alt="PreciosGas Logo" width={180} height={45} className="h-10 w-auto" priority />
+                <Image src="/logo.png" alt="PreciosGas Logo" width={400} height={150} className="w-48 md:w-64 h-auto max-h-[72px] object-contain" priority />
               </Link>
               <div className="hidden md:flex space-x-8">
                 <CercaDeMiBtn />
@@ -58,8 +58,8 @@ export default function RootLayout({
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               {/* Columna 1: Brand & Description */}
               <div className="space-y-4">
-                <div className="flex items-center mb-2">
-                  <Image src="/logo.png" alt="PreciosGas Logo" width={150} height={38} className="h-8 w-auto opacity-90" />
+                <div className="flex items-center mb-4">
+                  <Image src="/logo.png" alt="PreciosGas Logo" width={400} height={150} className="w-40 md:w-56 h-auto object-contain opacity-90" />
                 </div>
                 <p className="text-slate-500 text-sm leading-relaxed">
                   Tu portal de confianza para comparar los precios de los combustibles actualizados al instante en toda España. Ahorra en cada repostaje de forma rápida y sencilla.
