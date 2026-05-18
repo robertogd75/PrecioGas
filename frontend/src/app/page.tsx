@@ -178,6 +178,9 @@ export default function Home() {
 
       {/* Precios Medios Nacionales */}
       <section className="max-w-4xl mx-auto mb-12 glass rounded-3xl p-6 border border-slate-100/80">
+        <h2 className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">
+          Media de Precios Nacional (Toda España)
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
           <div className="pb-4 md:pb-0">
             <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> GASOLINA 95</span>
