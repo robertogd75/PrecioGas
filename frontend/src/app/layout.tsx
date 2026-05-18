@@ -13,6 +13,10 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 export const metadata: Metadata = {
   title: 'Gasolineras España - Encuentra el mejor precio hoy',
   description: 'Consulta en tiempo real los precios de las gasolineras en España. Encuentra la más cercana y barata a ti.',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
