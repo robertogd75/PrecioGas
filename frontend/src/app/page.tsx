@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { Search, Navigation } from 'lucide-react';
+import { Search, Navigation, Fuel } from 'lucide-react';
 
 const DynamicMap = dynamic(() => import('@/components/Map'), {
   ssr: false,
@@ -101,7 +101,7 @@ export default function Home() {
               type="text" 
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Introduce municipio, ciudad o provincia..." 
+              placeholder="Buscar municipio o provincia..." 
               className="w-full py-2 px-1 bg-transparent outline-none text-slate-800 text-base font-medium placeholder-slate-400"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') handleSearch();
@@ -153,15 +153,15 @@ export default function Home() {
       <section className="max-w-4xl mx-auto mb-12 glass rounded-3xl p-6 border border-slate-100/80">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
           <div className="pb-4 md:pb-0">
-            <span className="text-xs font-bold text-slate-400 block mb-1">⛽ GASOLINA 95</span>
+            <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> GASOLINA 95</span>
             <span className="text-2xl font-extrabold text-slate-800 font-mono">1.594 €/L</span>
           </div>
           <div className="py-4 md:py-0 md:px-4">
-            <span className="text-xs font-bold text-slate-400 block mb-1">⛽ DIÉSEL A</span>
+            <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> DIÉSEL A</span>
             <span className="text-2xl font-extrabold text-slate-800 font-mono">1.482 €/L</span>
           </div>
           <div className="pt-4 md:pt-0 md:pl-4">
-            <span className="text-xs font-bold text-slate-400 block mb-1">⛽ GLP VEHÍCULO</span>
+            <span className="text-xs font-bold text-slate-400 flex items-center justify-center gap-1 mb-1"><Fuel size={14}/> GLP VEHÍCULO</span>
             <span className="text-2xl font-extrabold text-slate-800 font-mono">0.941 €/L</span>
           </div>
         </div>

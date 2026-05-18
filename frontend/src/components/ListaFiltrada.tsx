@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { MapPin, ArrowRight, Filter, SortAsc, HelpCircle, Check, RefreshCw } from 'lucide-react';
+import { MapPin, ArrowRight, Filter, SortAsc, HelpCircle, Check, RefreshCw, ChevronDown, ChevronUp, Map as MapIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const MunicipiosMap = dynamic(() => import('./MunicipiosMap'), { ssr: false });
@@ -18,6 +18,8 @@ export default function ListaFiltrada({ gasolineras, gasolineraMasBarataId }: Li
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('cheap'); // 'cheap' | 'brand'
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isFiltersOpen, setIsFiltersOpen] = useState<boolean>(false);
+  const [isMapOpen, setIsMapOpen] = useState<boolean>(false);
   const ITEMS_PER_PAGE = 12;
 
   // Extract all unique fuels present in this specific list
@@ -121,12 +123,20 @@ export default function ListaFiltrada({ gasolineras, gasolineraMasBarataId }: Li
     <div className="flex flex-col">
       {/* Dynamic Filters Widget */}
       <div className="glass rounded-3xl p-6 border border-slate-100/80 mb-8">
-        <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-100">
-          <Filter className="text-emerald-600" size={20} />
-          <h2 className="text-lg font-bold text-slate-800 font-outfit">Filtros y Búsqueda Avanzada ({filteredGasolineras.length} de {gasolineras.length})</h2>
+        <div 
+          className="flex items-center justify-between gap-2 pb-4 border-b border-slate-100 cursor-pointer"
+          onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+        >
+          <div className="flex items-center gap-2">
+            <Filter className="text-emerald-600" size={20} />
+            <h2 className="text-lg font-bold text-slate-800 font-outfit">Filtros y Búsqueda ({filteredGasolineras.length})</h2>
+          </div>
+          {isFiltersOpen ? <ChevronUp size={20} className="text-slate-400" /> : <ChevronDown size={20} className="text-slate-400" />}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {isFiltersOpen && (
+          <div className="pt-6 animate-fade-in-up">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search Input */}
           <div className="flex flex-col">
             <label className="text-xs font-bold text-slate-400 uppercase mb-2 tracking-wider">Buscar por nombre/dirección</label>
@@ -200,14 +210,28 @@ export default function ListaFiltrada({ gasolineras, gasolineraMasBarataId }: Li
             </button>
           </div>
         )}
+          </div>
+        )}
       </div>
 
       {/* Interactive Map - Classical Integration */}
-      <div className="h-[400px] mb-8 relative w-full rounded-3xl overflow-hidden border border-slate-150 shadow-sm">
-        <div className="absolute top-4 left-4 z-[400] bg-white/95 border border-slate-150 text-[10px] text-emerald-600 px-3 py-1.5 rounded-lg font-bold tracking-widest uppercase shadow">
-          VISTA DE MAPA LOCAL
-        </div>
-        <MunicipiosMap stations={filteredGasolineras} />
+      <div className="mb-8">
+        <button 
+          onClick={() => setIsMapOpen(!isMapOpen)}
+          className="w-full bg-white border border-slate-100 p-4 rounded-xl flex items-center justify-between text-slate-700 font-bold hover:border-emerald-300 transition-colors shadow-sm mb-4"
+        >
+          <span className="flex items-center gap-2"><MapIcon className="text-emerald-600" size={20}/> Mapa Local Interactivo</span>
+          {isMapOpen ? <ChevronUp size={20} className="text-slate-400" /> : <ChevronDown size={20} className="text-slate-400" />}
+        </button>
+        
+        {isMapOpen && (
+          <div className="h-[400px] relative w-full rounded-3xl overflow-hidden border border-slate-150 shadow-sm animate-fade-in-up">
+            <div className="hidden md:block absolute top-4 left-4 z-[400] bg-white/95 border border-slate-150 text-[10px] text-emerald-600 px-3 py-1.5 rounded-lg font-bold tracking-widest uppercase shadow">
+              VISTA DE MAPA LOCAL
+            </div>
+            <MunicipiosMap stations={filteredGasolineras} />
+          </div>
+        )}
       </div>
 
       {/* Grid List */}

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { MapPin, Clock, Fuel, ChevronLeft } from 'lucide-react';
+import { MapPin, Clock, Fuel, ChevronLeft, Check } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -104,7 +104,7 @@ export default async function GasolineraPage({ params }: { params: Promise<{ slu
               <div className="flex flex-wrap gap-3">
                 {gasolinera.servicios.map((s: string, idx: number) => (
                   <span key={idx} className="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl font-bold text-sm border border-emerald-100 shadow-sm flex items-center gap-2">
-                    ✓ {s}
+                    <Check size={14} className="text-emerald-500" /> {s}
                   </span>
                 ))}
               </div>

@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col relative pb-20 md:pb-0`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col relative pb-20 md:pb-0 overflow-x-hidden`}>
         {/* Abstract Background Elements */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-emerald-500/5 via-teal-500/5 to-transparent -z-10 blur-3xl pointer-events-none"></div>
         <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[120px] -z-10 pointer-events-none"></div>
