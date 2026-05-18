@@ -14,6 +14,7 @@ COPY . .
 # La URL del API para producción (inyectada en la compilación)
 ARG NEXT_PUBLIC_API_URL=http://localhost:3001
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NODE_OPTIONS="--max-old-space-size=1024"
 RUN npm run build
 
 FROM node:18-alpine AS runner

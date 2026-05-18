@@ -1,0 +1,9 @@
+**/node_modules
+**/.next
+**/out
+**/build
+**/*.7z
+**/*.zip
+**/*.rar
+**/*.tar.gz
+.git
