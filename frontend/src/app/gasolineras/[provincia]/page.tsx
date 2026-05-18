@@ -34,17 +34,18 @@ async function getMunicipiosProvincia(provincia: string) {
 }
 
 export default async function ProvinciaPage({ params }: { params: Promise<{ provincia: string }> }) {
-  const { provincia } = await params;
+  const { provincia: rawProvincia } = await params;
+  const provincia = decodeURIComponent(rawProvincia);
   const { municipios, provinciaOriginal } = await getMunicipiosProvincia(provincia);
 
   if (!municipios || municipios.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <div className="glass p-10 rounded-3xl max-w-2xl mx-auto border border-slate-800/80 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#CCFF00]/5 blur-2xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
-          <h1 className="text-3xl font-bold mb-4 text-white">No se encontraron datos</h1>
-          <p className="text-slate-400 mb-8">Parece que la provincia "{provincia}" no existe o está mal escrita.</p>
-          <Link href="/" className="inline-block bg-[#CCFF00] text-slate-950 px-6 py-3 rounded-xl font-extrabold hover:bg-white shadow-lg shadow-[#CCFF00]/10 transition-colors">
+        <div className="glass p-10 rounded-3xl max-w-2xl mx-auto border border-slate-100 shadow-sm relative overflow-hidden bg-white">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-2xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <h1 className="text-3xl font-bold mb-4 text-slate-900">No se encontraron datos</h1>
+          <p className="text-slate-500 mb-8">Parece que la provincia "{provincia}" no existe o está mal escrita.</p>
+          <Link href="/" className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-xl font-extrabold hover:bg-emerald-700 shadow-lg shadow-emerald-500/15 transition-colors">
             Volver al inicio
           </Link>
         </div>

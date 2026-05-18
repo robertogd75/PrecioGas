@@ -56,7 +56,9 @@ export async function generateMetadata({ params }: { params: Promise<{ provincia
 }
 
 export default async function MunicipioPage({ params }: { params: Promise<{ provincia: string, municipio: string }> }) {
-  const { provincia, municipio } = await params;
+  const { provincia: rawProvincia, municipio: rawMunicipio } = await params;
+  const provincia = decodeURIComponent(rawProvincia);
+  const municipio = decodeURIComponent(rawMunicipio);
 
   const response = await getGasolinerasMunicipio(provincia, municipio);
   const gasolineras = response?.data || [];
