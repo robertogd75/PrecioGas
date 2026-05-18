@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Fuel, MapPin, TrendingDown } from 'lucide-react'
 import CercaDeMiBtn from '../components/CercaDeMiBtn'
 import MobileBottomNav from '../components/MobileBottomNav'
@@ -30,13 +31,8 @@ export default function RootLayout({
         <nav className="sticky top-0 z-50 glass border-b border-slate-100/80 transition-all">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
-              <Link href="/" className="flex items-center space-x-3 group">
-                <div className="bg-emerald-500 p-2.5 rounded-xl text-white shadow-emerald-500/20 shadow-lg group-hover:scale-105 transition-transform">
-                  <Fuel size={24} />
-                </div>
-                <span className="font-outfit font-bold text-2xl tracking-tight text-slate-900">
-                  Precios<span className="text-emerald-600">Gas</span>
-                </span>
+              <Link href="/" className="flex items-center group transition-transform hover:scale-[1.02]">
+                <Image src="/logo.png" alt="PreciosGas Logo" width={180} height={45} className="h-10 w-auto" priority />
               </Link>
               <div className="hidden md:flex space-x-8">
                 <CercaDeMiBtn />
@@ -62,13 +58,8 @@ export default function RootLayout({
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               {/* Columna 1: Brand & Description */}
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="bg-emerald-500 p-2.5 rounded-xl text-white shadow-emerald-500/20 shadow-md">
-                    <Fuel size={20} />
-                  </div>
-                  <span className="font-outfit font-bold text-xl tracking-tight text-slate-900">
-                    Precios<span className="text-emerald-600">Gas</span>
-                  </span>
+                <div className="flex items-center mb-2">
+                  <Image src="/logo.png" alt="PreciosGas Logo" width={150} height={38} className="h-8 w-auto opacity-90" />
                 </div>
                 <p className="text-slate-500 text-sm leading-relaxed">
                   Tu portal de confianza para comparar los precios de los combustibles actualizados al instante en toda España. Ahorra en cada repostaje de forma rápida y sencilla.
