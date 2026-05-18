@@ -48,7 +48,7 @@ export default function MunicipiosMap({ stations }: { stations: any[] }) {
 
   if (!hasMounted) {
     return (
-      <div className="w-full h-full bg-[#090c15] border border-slate-800/80 rounded-3xl flex items-center justify-center">
+      <div className="w-full h-full bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center">
         <span className="text-slate-500 font-medium animate-pulse">Cargando visualizador de mapa...</span>
       </div>
     );
@@ -58,7 +58,7 @@ export default function MunicipiosMap({ stations }: { stations: any[] }) {
   const defaultCenter: L.LatLngTuple = [40.4168, -3.7038];
 
   return (
-    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 z-10">
+    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-md border border-slate-100/80 z-10">
       <MapContainer 
         center={defaultCenter} 
         zoom={13} 
@@ -82,9 +82,9 @@ export default function MunicipiosMap({ stations }: { stations: any[] }) {
           return (
             <Marker key={s.id} position={[latitude, longitude]} icon={activeIcon}>
               <Popup>
-                <div className="font-sans min-w-[200px] bg-[#07090e] text-white p-3 rounded-lg border border-slate-800">
-                  <h3 className="font-bold text-sm text-[#CCFF00] mb-2">{s.rotulo}</h3>
-                  <p className="text-[11px] text-slate-400 mb-3 flex items-start gap-1">
+                <div className="font-sans min-w-[200px] bg-white text-slate-800 p-3 rounded-lg border border-slate-100 shadow-xl">
+                  <h3 className="font-bold text-sm text-emerald-600 mb-2">{s.rotulo}</h3>
+                  <p className="text-[11px] text-slate-500 mb-3 flex items-start gap-1">
                     <MapPin size={12} className="shrink-0 mt-0.5" />
                     {s.direccion}
                   </p>
@@ -92,10 +92,10 @@ export default function MunicipiosMap({ stations }: { stations: any[] }) {
                   <div className="space-y-1.5 max-h-[100px] overflow-y-auto mb-3">
                     {s.combustibles && s.combustibles.map((c: any, idx: number) => {
                       const isGasolina = c.nombre.toLowerCase().includes('gasolina');
-                      const badgeColor = isGasolina ? 'text-cyan-400' : 'text-amber-400';
+                      const badgeColor = isGasolina ? 'text-cyan-600' : 'text-amber-500';
                       return (
-                        <div key={idx} className="flex justify-between items-center text-xs py-1 border-b border-slate-800/40">
-                          <span className="text-[9px] font-bold uppercase text-slate-400">{c.nombre}</span>
+                        <div key={idx} className="flex justify-between items-center text-xs py-1 border-b border-slate-100">
+                          <span className="text-[9px] font-bold uppercase text-slate-500">{c.nombre}</span>
                           <span className={`font-mono font-extrabold ${badgeColor}`}>{c.precio}€</span>
                         </div>
                       );
@@ -104,7 +104,7 @@ export default function MunicipiosMap({ stations }: { stations: any[] }) {
                   
                   <a 
                     href={`/gasolinera/${s.slug}`} 
-                    className="block text-center bg-[#CCFF00] text-slate-950 py-1.5 rounded-lg text-xs font-black hover:bg-white transition-colors"
+                    className="block text-center bg-emerald-600 text-white py-1.5 rounded-lg text-xs font-black hover:bg-emerald-700 shadow-lg shadow-emerald-500/15 transition-colors"
                   >
                     Detalles y Precios
                   </a>

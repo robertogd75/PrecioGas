@@ -65,19 +65,19 @@ export default async function ProvinciaPage({ params }: { params: Promise<{ prov
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in-up">
       <nav className="flex items-center text-sm font-medium text-slate-500 mb-8">
-        <Link href="/" className="hover:text-[#CCFF00] transition-colors flex items-center gap-1">
+        <Link href="/" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
           <ChevronLeft size={16} /> Volver al Inicio
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-[#CCFF00] font-bold">{provDisplay}</span>
+        <span className="text-emerald-600 font-bold">{provDisplay}</span>
       </nav>
 
-      <header className="glass p-8 md:p-12 rounded-3xl mb-12 relative overflow-hidden border border-slate-800/80">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#CCFF00]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
-        <h1 className="text-4xl font-extrabold text-white mb-4 relative z-10">
-          Gasolineras en <span className="text-[#CCFF00]">{provDisplay}</span>
+      <header className="glass p-8 md:p-12 rounded-3xl mb-12 relative overflow-hidden border border-slate-100 shadow-sm bg-white">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-4 relative z-10">
+          Gasolineras en <span className="text-emerald-600">{provDisplay}</span>
         </h1>
-        <p className="text-lg text-slate-350 leading-relaxed max-w-3xl relative z-10">
+        <p className="text-lg text-slate-600 leading-relaxed max-w-3xl relative z-10">
           Selecciona un municipio de la provincia para comparar precios y encontrar la opción más barata hoy.
         </p>
       </header>
@@ -88,12 +88,12 @@ export default async function ProvinciaPage({ params }: { params: Promise<{ prov
             <Link 
               key={idx} 
               href={`/gasolineras/${provincia.toLowerCase()}/${muni.toLowerCase()}`}
-              className="bg-slate-900/30 p-4 rounded-xl flex items-center gap-3 border border-slate-850 hover:border-[#CCFF00]/40 transition-all hover:-translate-y-1 group"
+              className="bg-slate-50/50 p-4 rounded-xl flex items-center gap-3 border border-slate-100 hover:border-emerald-300 transition-all hover:-translate-y-1 hover:shadow-sm group"
             >
-              <div className="bg-slate-950/60 text-[#CCFF00]/60 p-2.5 rounded-lg group-hover:bg-[#CCFF00]/10 group-hover:text-[#CCFF00] transition-colors">
+              <div className="bg-emerald-50 text-emerald-600 p-2.5 rounded-lg group-hover:bg-emerald-100 transition-colors">
                 <MapPin size={18} />
               </div>
-              <span className="font-semibold text-slate-300 group-hover:text-white transition-colors line-clamp-1">
+              <span className="font-semibold text-slate-800 group-hover:text-emerald-700 transition-colors line-clamp-1">
                 {muni}
               </span>
             </Link>

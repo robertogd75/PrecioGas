@@ -57,7 +57,7 @@ export default function RootLayout({
         <MobileBottomNav />
 
         {/* Footer */}
-        <footer className="bg-slate-900 border-t border-slate-800 py-16 mt-20 text-slate-400">
+        <footer className="bg-slate-50 border-t border-slate-100 py-16 mt-20 text-slate-600">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               {/* Columna 1: Brand & Description */}
@@ -66,11 +66,11 @@ export default function RootLayout({
                   <div className="bg-emerald-500 p-2.5 rounded-xl text-white shadow-emerald-500/20 shadow-md">
                     <Fuel size={20} />
                   </div>
-                  <span className="font-outfit font-bold text-xl tracking-tight text-white">
-                    Precios<span className="text-emerald-400">Gas</span>
+                  <span className="font-outfit font-bold text-xl tracking-tight text-slate-900">
+                    Precios<span className="text-emerald-600">Gas</span>
                   </span>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-500 text-sm leading-relaxed">
                   Tu portal de confianza para comparar los precios de los combustibles actualizados al instante en toda España. Ahorra en cada repostaje de forma rápida y sencilla.
                 </p>
               </div>
@@ -80,17 +80,17 @@ export default function RootLayout({
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Enlaces Rápidos</h3>
                 <ul className="space-y-2.5">
                   <li>
-                    <Link href="/" className="text-sm font-semibold text-slate-300 hover:text-emerald-450 transition-colors">
+                    <Link href="/" className="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
                       Inicio
                     </Link>
                   </li>
                   <li>
-                    <Link href="/provincias" className="text-sm font-semibold text-slate-300 hover:text-emerald-455 transition-colors">
+                    <Link href="/provincias" className="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
                       Buscar por Localidad
                     </Link>
                   </li>
                   <li>
-                    <Link href="/provincias" className="text-sm font-semibold text-slate-300 hover:text-emerald-455 transition-colors">
+                    <Link href="/provincias" className="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
                       Gasolineras Baratas
                     </Link>
                   </li>
@@ -102,17 +102,17 @@ export default function RootLayout({
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Legal</h3>
                 <ul className="space-y-2.5">
                   <li>
-                    <Link href="/aviso-legal" className="text-sm font-semibold text-slate-300 hover:text-emerald-455 transition-colors">
+                    <Link href="/aviso-legal" className="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
                       Aviso Legal
                     </Link>
                   </li>
                   <li>
-                    <Link href="/politica-privacidad" className="text-sm font-semibold text-slate-300 hover:text-emerald-455 transition-colors">
+                    <Link href="/politica-privacidad" className="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
                       Política de Privacidad
                     </Link>
                   </li>
                   <li>
-                    <Link href="/politica-cookies" className="text-sm font-semibold text-slate-300 hover:text-emerald-455 transition-colors">
+                    <Link href="/politica-cookies" className="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
                       Política de Cookies
                     </Link>
                   </li>
@@ -122,26 +122,26 @@ export default function RootLayout({
               {/* Columna 4: Fuente de datos */}
               <div>
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Datos Oficiales</h3>
-                <p className="text-slate-400 text-xs leading-relaxed mb-3">
+                <p className="text-slate-500 text-xs leading-relaxed mb-3">
                   Los precios son proporcionados y actualizados periódicamente en sincronización con el Geoportal del Ministerio de Industria, Comercio y Turismo de España.
                 </p>
               </div>
             </div>
 
             {/* Bottom Bar: Copyright & Portfolio Link */}
-            <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-slate-500 text-sm">
                 PreciosGas &copy; {new Date().getFullYear()} - Optimizado para tu bolsillo.
               </p>
-              <div className="flex items-center gap-1.5 text-sm text-slate-400">
+              <div className="flex items-center gap-1.5 text-sm text-slate-500">
                 <span>Creado por</span>
                 <a 
                   href="https://rgardel.es" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="font-bold text-white hover:text-emerald-400 transition-colors inline-flex items-center gap-0.5 border-b border-transparent hover:border-emerald-400"
+                  className="font-bold text-slate-800 hover:text-emerald-600 transition-colors inline-flex items-center gap-0.5 border-b border-transparent hover:border-emerald-600"
                 >
-                  Roberto García Delgado <span className="text-emerald-400 font-normal hover:text-emerald-350 transition-colors">(rgardel.es)</span>
+                  Roberto García Delgado <span className="text-emerald-500 font-normal hover:text-emerald-400 transition-colors">(rgardel.es)</span>
                 </a>
               </div>
             </div>
