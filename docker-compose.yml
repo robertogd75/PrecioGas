@@ -23,8 +23,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      # Conexión interna dentro de la red Docker
-      - NEXT_PUBLIC_API_URL=http://backend:3001
+      # URL del backend (Sustituible en Portainer en la pestaña de Env Variables)
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001}
     depends_on:
       - backend
     networks:
