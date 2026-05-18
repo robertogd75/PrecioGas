@@ -8,7 +8,7 @@ services:
     container_name: gasolineras_backend
     restart: always
     ports:
-      - "3001:3001"
+      - "7851:3001"
     volumes:
       - backend_data:/app/data # Guarda el JSON aunque se apague el contenedor
     networks:
@@ -19,14 +19,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:7851}
     container_name: gasolineras_frontend
     restart: always
     ports:
-      - "3000:3000"
+      - "7850:3000"
     environment:
       # URL del backend (Sustituible en Portainer en la pestaña de Env Variables)
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:7851}
     depends_on:
       - backend
     networks:
