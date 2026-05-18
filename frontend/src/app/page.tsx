@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { Search, Navigation, Fuel } from 'lucide-react';
+import { Search, Navigation, Fuel, MapPin, ChevronUp } from 'lucide-react';
 
 const DynamicMap = dynamic(() => import('@/components/Map'), {
   ssr: false,
@@ -21,6 +21,8 @@ export default function Home() {
   const [searching, setSearching] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [recentSearches, setRecentSearches] = useState<Array<{ name: string, query: string }>>([]);
+  const [showMap, setShowMap] = useState(true);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -29,11 +31,24 @@ export default function Home() {
         if (raw) {
           setRecentSearches(JSON.parse(raw));
         }
+        const mapPref = localStorage.getItem('show_home_map');
+        if (mapPref !== null) {
+          setShowMap(mapPref === 'true');
+        }
+        setMapLoaded(true);
       } catch (e) {
         console.error(e);
       }
     }
   }, []);
+
+  const toggleMap = () => {
+    const newState = !showMap;
+    setShowMap(newState);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('show_home_map', String(newState));
+    }
+  };
 
   const saveSearch = (name: string, query: string) => {
     if (typeof window === 'undefined') return;
@@ -179,12 +194,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mapa Interactivo a Pantalla Completa */}
-      <section className="h-[500px] md:h-[600px] relative w-full rounded-3xl overflow-hidden shadow-lg border border-slate-100/80 mb-16">
-        <div className="absolute top-4 left-4 z-[400] bg-white/95 border border-slate-150 text-[10px] text-emerald-600 px-3 py-1.5 rounded-lg font-bold tracking-widest uppercase shadow">
-          MAPA INTERACTIVO NACIONAL
+      {/* Mapa Interactivo Nacional */}
+      <section className="mb-16 w-full">
+        <div className="flex flex-wrap items-center justify-between mb-4 px-2 gap-4">
+          <h2 className="text-sm font-bold text-slate-800 uppercase tracking-widest flex items-center gap-2">
+            <MapPin size={18} className="text-emerald-600" />
+            MAPA INTERACTIVO NACIONAL
+          </h2>
+          {mapLoaded && (
+            <button 
+              onClick={toggleMap}
+              className="text-xs font-bold text-emerald-600 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 shadow-sm"
+            >
+              {showMap ? 'Ocultar Mapa' : 'Mostrar Mapa'}
+              <ChevronUp size={16} className={`transition-transform duration-300 ${!showMap ? 'rotate-180' : ''}`} />
+            </button>
+          )}
         </div>
-        <DynamicMap />
+
+        {mapLoaded && showMap && (
+          <div className="h-[500px] md:h-[600px] relative w-full rounded-3xl overflow-hidden shadow-lg border border-slate-100/80 animate-fade-in-up">
+            <DynamicMap />
+          </div>
+        )}
       </section>
 
       {/* Grid de Características */}
